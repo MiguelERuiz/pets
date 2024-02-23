@@ -13,7 +13,14 @@ defmodule Pets.Pet do
         def greet do
           IO.puts("Hello there, my name is #{unquote(pet_name)}")
         end
+
+        def hobbies do
+          ["spend good time"]
+        end
       end
-    Macro.escape(Module.create(Module.concat(__CALLER__.module, normalized_module), contents, Macro.Env.location(__ENV__)))
+    __CALLER__.module |>
+    Module.concat(normalized_module) |>
+    Module.create(contents, Macro.Env.location(__ENV__)) |>
+    Macro.escape
   end
 end
