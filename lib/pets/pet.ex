@@ -1,11 +1,4 @@
 defmodule Pets.Pet do
-
-  defmacro __using__(_params) do
-    quote do
-      import unquote(__MODULE__)
-    end
-  end
-
   defmacro pet(pet_name) do
     normalized_module = pet_name |> String.to_atom
     contents =
