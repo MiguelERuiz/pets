@@ -7,8 +7,8 @@ defmodule Pets.Pet do
       quote do
         def greet do
           """
-            Hello there, my name is #{unquote(pet_name)} and
-            I am a #{unquote(species)}
+          Hello there, my name is #{unquote(pet_name)} and
+          I am a #{unquote(species)}
           """
         end
 
