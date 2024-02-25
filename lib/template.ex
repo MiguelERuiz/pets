@@ -1,5 +1,5 @@
 defmodule Template do
-  import Pets.Pet
+  use Pets
 
   pet "Bucky" do
     species :dog
