@@ -19,9 +19,10 @@ defmodule Pets.Pet do
           unquote(hobbies)
         end
       end
-    __CALLER__.module |>
-    Module.concat(normalized_module) |>
-    Module.create(contents, Macro.Env.location(__ENV__)) |>
-    Macro.escape
+    quote do
+      defmodule unquote(Module.concat(__CALLER__.module, normalized_module)) do
+        unquote(contents)
+      end
+    end
   end
 end
