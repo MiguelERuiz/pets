@@ -13,17 +13,10 @@ defmodule Pets.Pet do
     contents =
       quote do
         def greet do
-          """
-          Hello there, my name is #{unquote(pet_name)} and
-          I am a #{unquote(species)}
-          """
+          "Hello there, my name is #{unquote(pet_name)} and I am a #{unquote(species)}"
         end
 
-        def hobbies, do: format_hobbies(unquote(hobbies))
-
-        defp format_hobbies([]), do: "#{unquote(pet_name)} has no hobbies"
-        defp format_hobbies([hobby]), do: "#{unquote(pet_name)}\'s hobby is #{hobby}"
-        defp format_hobbies(hobbies), do: "#{unquote(pet_name)}\'s hobbies are #{Enum.intersperse(hobbies, ", ")}"
+        def hobbies, do: unquote(format_hobbies(pet_name, hobbies))
       end
     quote do
       defmodule unquote(Module.concat(__CALLER__.module, normalized_module)) do
@@ -31,4 +24,8 @@ defmodule Pets.Pet do
       end
     end
   end
+
+  def format_hobbies(pet_name, []), do: "#{pet_name} has no hobbies"
+  def format_hobbies(pet_name, [hobby]), do: "#{pet_name}\'s hobby is #{hobby}"
+  def format_hobbies(pet_name, hobbies), do: "#{pet_name}\'s hobbies are #{Enum.intersperse(hobbies, ", ")}"
 end
