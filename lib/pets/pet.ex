@@ -21,9 +21,9 @@ defmodule Pets.Pet do
 
         def hobbies, do: format_hobbies(unquote(hobbies))
 
-        defp format_hobbies([]), do: "I have no hobbies"
-        defp format_hobbies([hobby]), do: "my hobby is #{hobby}"
-        defp format_hobbies(hobbies), do: "my hobbies are #{Enum.intersperse(hobbies, ", ")}"
+        defp format_hobbies([]), do: "#{unquote(pet_name)} has no hobbies"
+        defp format_hobbies([hobby]), do: "#{unquote(pet_name)}\'s hobby is #{hobby}"
+        defp format_hobbies(hobbies), do: "#{unquote(pet_name)}\'s hobbies are #{Enum.intersperse(hobbies, ", ")}"
       end
     quote do
       defmodule unquote(Module.concat(__CALLER__.module, normalized_module)) do

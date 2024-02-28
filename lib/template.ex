@@ -13,6 +13,6 @@ defmodule Template do
 
   pet "Godzilla" do
     species :lizard
-    hobbies ["destroying Tokio"]
+    hobbies []
   end
 end
