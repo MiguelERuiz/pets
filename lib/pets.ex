@@ -1,18 +1,5 @@
 defmodule Pets do
-  @moduledoc """
-  Documentation for `Pets`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Pets.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  defmacro __using__(_params) do
+    import Pets.Pet, only: :macros
   end
 end
