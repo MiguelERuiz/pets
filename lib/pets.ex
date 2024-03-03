@@ -1,5 +1,7 @@
 defmodule Pets do
   defmacro __using__(_params) do
-    import Pets.Pet, only: :macros
+    quote do
+      import Pets.Pet, only: :macros
+    end
   end
 end
